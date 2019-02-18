@@ -3,6 +3,7 @@ import { TextInput } from './TextInput';
 import WeatherCard from '../weather/WeatherCard';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
+import { Consumer } from '../../context';
 
 class SearchForm extends Component {
   state = {
@@ -11,7 +12,7 @@ class SearchForm extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  getWeather = async e => {
+  getWeather = async (dispatch, e) => {
     e.preventDefault();
 
     const { zipcode } = this.state;
@@ -22,6 +23,8 @@ class SearchForm extends Component {
           API_KEY.weatherAPI
         }`
       );
+
+      dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
 
       const { main, name, sys, weather } = res.data;
 
@@ -55,44 +58,53 @@ class SearchForm extends Component {
       error
     } = this.state;
     return (
-      <React.Fragment>
-        <div className="d-flex flex-column justify-content-center">
-          <div className="card mt-5 mb-3">
-            <div className="card-body bg-primary text-white text-center">
-              <h3 className="display-3">
-                {this.state.city
-                  ? `${this.state.city}, ${this.state.country}`
-                  : 'Weather Conditions'}
-              </h3>
-            </div>
-          </div>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          return (
+            <React.Fragment>
+              <div className="d-flex flex-column justify-content-center">
+                <div className="card mt-5 mb-3">
+                  <div className="card-body bg-primary text-white text-center">
+                    <h3 className="display-3">
+                      {this.state.city
+                        ? `${this.state.city}, ${this.state.country}`
+                        : 'Weather Conditions'}
+                    </h3>
+                  </div>
+                </div>
 
-          {!this.state.city ? (
-            <form
-              className="form-inline mb-2 justify-content-center"
-              onSubmit={this.getWeather}
-            >
-              <TextInput
-                type="text"
-                name="zipcode"
-                placeholder="Enter Zip Code..."
-                value={this.state.zipcode}
-                onChange={this.onChange}
+                {!this.state.city ? (
+                  <form
+                    className="form-inline mb-2 justify-content-center"
+                    onSubmit={this.getWeather.bind(this, dispatch)}
+                  >
+                    <TextInput
+                      type="text"
+                      name="zipcode"
+                      placeholder="Enter Zip Code..."
+                      value={this.state.zipcode}
+                      onChange={this.onChange}
+                    />
+                    <button className="btn btn-outline-primary mx-2">
+                      Search
+                    </button>
+                  </form>
+                ) : null}
+              </div>
+
+              <WeatherCard
+                temperature={temperature}
+                city={city}
+                country={country}
+                humidity={humidity}
+                description={description}
+                error={error}
               />
-              <button className="btn btn-outline-primary mx-2">Search</button>
-            </form>
-          ) : null}
-        </div>
-
-        <WeatherCard
-          temperature={temperature}
-          city={city}
-          country={country}
-          humidity={humidity}
-          description={description}
-          error={error}
-        />
-      </React.Fragment>
+            </React.Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }
