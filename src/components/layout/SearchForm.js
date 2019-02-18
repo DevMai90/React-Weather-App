@@ -3,6 +3,7 @@ import { TextInput } from './TextInput';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
+import classnames from 'classnames';
 
 class SearchForm extends Component {
   state = {
@@ -26,8 +27,7 @@ class SearchForm extends Component {
     } catch (e) {
       dispatch({
         type: 'ERROR',
-        payload:
-          'There has been an error with your request. Please review inputs.'
+        payload: 'Please enter a valid US zip code.'
       });
     }
   };
@@ -36,12 +36,17 @@ class SearchForm extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, city, country } = value;
+          const { dispatch, city, country, error } = value;
           return (
             <React.Fragment>
               <div className="d-flex flex-column justify-content-center">
                 <div className="card mt-5 mb-3">
-                  <div className="card-body bg-primary text-white text-center">
+                  <div
+                    className={classnames(
+                      'card-body bg-primary text-white text-center',
+                      { 'bg-danger': error }
+                    )}
+                  >
                     <h3 className="display-3">
                       {city ? `${city}, ${country}` : 'Weather Conditions'}
                     </h3>
@@ -59,6 +64,7 @@ class SearchForm extends Component {
                       placeholder="Enter Zip Code..."
                       value={this.state.zipcode}
                       onChange={this.onChange}
+                      error={error}
                     />
                     <button className="btn btn-outline-primary mx-2">
                       Search

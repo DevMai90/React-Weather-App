@@ -18,21 +18,16 @@ class WeatherCard extends Component {
           return (
             <React.Fragment>
               {city ? (
-                <div className="card">
-                  <div className="card-body">
-                    <ul className="list-group">
-                      <li className="list-group-item">
-                        {`Temperature: ${temperature}`}
-                      </li>
-                      <li className="list-group-item">
-                        {`Description: ${description}`}
-                      </li>
-                      <li className="list-group-item">{`Humidity: ${humidity}`}</li>
-                    </ul>
-                  </div>
+                <div className="text-center">
+                  <h2 className="display-3">
+                    {' '}
+                    <strong>{temperature}° F</strong>
+                  </h2>
+                  <h4>{description}</h4>
+                  <h4>Humidity: {humidity}%</h4>
                 </div>
               ) : (
-                <h3 className="text-danger">{error}</h3>
+                <h3 className="text-danger text-center">{error}</h3>
               )}
             </React.Fragment>
           );
