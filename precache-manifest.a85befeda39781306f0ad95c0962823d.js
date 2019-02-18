@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react-weather-app/static/css/main.75444a71.chunk.css"
   },
   {
-    "revision": "9bf8528483b250d9d57800bda7d026fc",
+    "revision": "2ab51cedf3b60ce70524bd76f10be332",
     "url": "/react-weather-app/index.html"
   }
 ];
