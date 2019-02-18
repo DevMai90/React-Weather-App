@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { TextInput } from '../layout/TextInput';
+import { TextInput } from './TextInput';
 import WeatherCard from '../weather/WeatherCard';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 
 class SearchForm extends Component {
   state = {
-    cityName: '',
-    countryName: '',
     zipcode: ''
   };
 
@@ -58,19 +56,22 @@ class SearchForm extends Component {
     } = this.state;
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col">
-            <div className="card mt-5">
-              <div className="card-body bg-primary text-white text-center">
-                <h3 className="display-3">
-                  {this.state.cityName === ''
-                    ? 'Weather Conditions'
-                    : this.state.cityName}
-                </h3>
-              </div>
+        <div className="d-flex flex-column justify-content-center">
+          <div className="card mt-5 mb-3">
+            <div className="card-body bg-primary text-white text-center">
+              <h3 className="display-3">
+                {this.state.city
+                  ? `${this.state.city}, ${this.state.country}`
+                  : 'Weather Conditions'}
+              </h3>
             </div>
+          </div>
 
-            <form className="form-inline mt-2" onSubmit={this.getWeather}>
+          {!this.state.city ? (
+            <form
+              className="form-inline mb-2 justify-content-center"
+              onSubmit={this.getWeather}
+            >
               <TextInput
                 type="text"
                 name="zipcode"
@@ -80,7 +81,7 @@ class SearchForm extends Component {
               />
               <button className="btn btn-outline-primary mx-2">Search</button>
             </form>
-          </div>
+          ) : null}
         </div>
 
         <WeatherCard
