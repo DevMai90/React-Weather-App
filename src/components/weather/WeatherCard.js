@@ -9,22 +9,34 @@ class WeatherCard extends Component {
           const {
             temperature,
             city,
-            country,
             humidity,
             description,
+            icon,
+            wind,
             error
           } = value;
 
           return (
             <React.Fragment>
               {city ? (
-                <div className="text-center">
-                  <h2 className="display-3">
-                    {' '}
-                    <strong>{temperature}° F</strong>
-                  </h2>
-                  <h4>{description}</h4>
-                  <h4>Humidity: {humidity}%</h4>
+                <div className="d-flex justify-content-center row-hl">
+                  <div className="item-hl p-3 align-self-center">
+                    <h2 className="display-3">
+                      <strong>{temperature}° F</strong>
+                    </h2>
+                  </div>
+
+                  <div className="item-hl p-3">
+                    <h4>
+                      {description}
+                      <img
+                        src={`http://openweathermap.org/img/w/${icon}.png`}
+                        alt=""
+                      />
+                    </h4>
+                    <h4>Humidity: {humidity}%</h4>
+                    <h4>Wind Speed: {wind} MPH</h4>
+                  </div>
                 </div>
               ) : (
                 <h3 className="text-danger text-center">{error}</h3>

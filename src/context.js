@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const Context = React.createContext();
 
 const reducer = (state, action) => {
-  const { main, name, sys, weather } = action.payload;
+  const { main, name, sys, weather, wind } = action.payload;
 
   switch (action.type) {
     case 'UPDATE_LOCATION':
@@ -14,6 +14,8 @@ const reducer = (state, action) => {
         country: sys.country,
         humidity: main.humidity,
         description: weather[0].description,
+        icon: weather[0].icon,
+        wind: (wind.speed / 1.609).toFixed(0),
         error: ''
       };
     case 'ERROR':
