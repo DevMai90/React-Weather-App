@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TextInput } from './TextInput';
-import WeatherCard from '../weather/WeatherCard';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
@@ -16,7 +15,6 @@ class SearchForm extends Component {
     e.preventDefault();
 
     const { zipcode } = this.state;
-
     try {
       const res = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${
@@ -25,56 +23,32 @@ class SearchForm extends Component {
       );
 
       dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
-
-      const { main, name, sys, weather } = res.data;
-
-      this.setState({
-        temperature: (((main.temp - 273.15) * 9) / 5 + 32).toFixed(0),
-        city: name,
-        country: sys.country,
-        humidity: main.humidity,
-        description: weather[0].description,
-        error: ''
-      });
-
-      console.log(res);
     } catch (e) {
-      this.setState({
-        cityName: '',
-        countryName: '',
-        error:
+      dispatch({
+        type: 'ERROR',
+        payload:
           'There has been an error with your request. Please review inputs.'
       });
     }
   };
 
   render() {
-    const {
-      temperature,
-      city,
-      country,
-      humidity,
-      description,
-      error
-    } = this.state;
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
+          const { dispatch, city, country } = value;
           return (
             <React.Fragment>
               <div className="d-flex flex-column justify-content-center">
                 <div className="card mt-5 mb-3">
                   <div className="card-body bg-primary text-white text-center">
                     <h3 className="display-3">
-                      {this.state.city
-                        ? `${this.state.city}, ${this.state.country}`
-                        : 'Weather Conditions'}
+                      {city ? `${city}, ${country}` : 'Weather Conditions'}
                     </h3>
                   </div>
                 </div>
 
-                {!this.state.city ? (
+                {!city ? (
                   <form
                     className="form-inline mb-2 justify-content-center"
                     onSubmit={this.getWeather.bind(this, dispatch)}
@@ -92,15 +66,6 @@ class SearchForm extends Component {
                   </form>
                 ) : null}
               </div>
-
-              <WeatherCard
-                temperature={temperature}
-                city={city}
-                country={country}
-                humidity={humidity}
-                description={description}
-                error={error}
-              />
             </React.Fragment>
           );
         }}

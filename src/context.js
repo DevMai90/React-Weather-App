@@ -9,11 +9,17 @@ const reducer = (state, action) => {
     case 'UPDATE_LOCATION':
       return {
         ...state,
-        temperature: main.temp,
+        temperature: (((main.temp - 273.15) * 9) / 5 + 32).toFixed(0),
         city: name,
         country: sys.country,
         humidity: main.humidity,
-        description: weather[0].description
+        description: weather[0].description,
+        error: ''
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;
@@ -22,6 +28,7 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
+    error: '',
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
