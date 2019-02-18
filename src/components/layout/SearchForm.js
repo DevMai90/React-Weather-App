@@ -53,24 +53,22 @@ class SearchForm extends Component {
                   </div>
                 </div>
 
-                {!city ? (
-                  <form
-                    className="form-inline mb-2 justify-content-center"
-                    onSubmit={this.getWeather.bind(this, dispatch)}
-                  >
-                    <TextInput
-                      type="text"
-                      name="zipcode"
-                      placeholder="Enter Zip Code..."
-                      value={this.state.zipcode}
-                      onChange={this.onChange}
-                      error={error}
-                    />
-                    <button className="btn btn-outline-primary mx-2">
-                      Search
-                    </button>
-                  </form>
-                ) : null}
+                <form
+                  className="form-inline mb-2 justify-content-center"
+                  onSubmit={this.getWeather.bind(this, dispatch)}
+                >
+                  <TextInput
+                    type="text"
+                    name="zipcode"
+                    placeholder="Enter Zip Code..."
+                    value={this.state.zipcode}
+                    onChange={this.onChange}
+                    error={error}
+                  />
+                  <button className="btn btn-outline-primary mx-2">
+                    Search
+                  </button>
+                </form>
               </div>
             </React.Fragment>
           );
