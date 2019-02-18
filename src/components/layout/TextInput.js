@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const TextInput = ({
   name,
@@ -9,18 +9,16 @@ export const TextInput = ({
   onChange
 }) => {
   return (
-    <div className="col">
-      <div className="form-group">
-        <label htmlFor={name}>{label}</label>
-        <input
-          type={type}
-          className="form-control"
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-      </div>
+    <div className="form-group">
+      <label htmlFor={name}>{label}</label>
+      <input
+        type={type}
+        className="form-control"
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

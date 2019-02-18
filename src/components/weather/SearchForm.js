@@ -7,7 +7,8 @@ import axios from 'axios';
 class SearchForm extends Component {
   state = {
     cityName: '',
-    countryName: ''
+    countryName: '',
+    zipcode: ''
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -15,10 +16,11 @@ class SearchForm extends Component {
   getWeather = async e => {
     e.preventDefault();
 
-    const { cityName, countryName } = this.state;
+    const { zipcode } = this.state;
+
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryName}&appid=${
+        `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${
           API_KEY.weatherAPI
         }`
       );
@@ -56,29 +58,31 @@ class SearchForm extends Component {
     } = this.state;
     return (
       <React.Fragment>
-        <form onSubmit={this.getWeather} className="mb-3">
-          <div className="row">
-            <TextInput
-              type="text"
-              label="City"
-              name="cityName"
-              placeholder="Enter city name..."
-              value={this.state.cityName}
-              onChange={this.onChange}
-            />
-            <TextInput
-              type="text"
-              label="Country"
-              name="countryName"
-              placeholder="Enter country name..."
-              value={this.state.countryName}
-              onChange={this.onChange}
-            />
+        <div className="row">
+          <div className="col">
+            <div className="card mt-5">
+              <div className="card-body bg-primary text-white text-center">
+                <h3 className="display-3">
+                  {this.state.cityName === ''
+                    ? 'Weather Conditions'
+                    : this.state.cityName}
+                </h3>
+              </div>
+            </div>
+
+            <form className="form-inline mt-2" onSubmit={this.getWeather}>
+              <TextInput
+                type="text"
+                name="zipcode"
+                placeholder="Enter Zip Code..."
+                value={this.state.zipcode}
+                onChange={this.onChange}
+              />
+              <button className="btn btn-outline-primary mx-2">Search</button>
+            </form>
           </div>
-          <button className="btn btn-primary" type="submit">
-            Search Weather Conditions
-          </button>
-        </form>
+        </div>
+
         <WeatherCard
           temperature={temperature}
           city={city}
