@@ -3,19 +3,16 @@ import React, { Component } from 'react';
 const Context = React.createContext();
 
 const reducer = (state, action) => {
-  const { main, name, sys, weather, wind } = action.payload;
-
   switch (action.type) {
     case 'UPDATE_LOCATION':
+      const { name, country } = action.payload.city;
+      const { list } = action.payload;
       return {
         ...state,
-        temperature: (((main.temp - 273.15) * 9) / 5 + 32).toFixed(0),
         city: name,
-        country: sys.country,
-        humidity: main.humidity,
-        description: weather[0].description,
-        icon: weather[0].icon,
-        wind: (wind.speed / 1.609).toFixed(0),
+        country,
+        temperature: list[0].weather[0].description,
+        location: action.payload,
         error: ''
       };
     case 'ERROR':

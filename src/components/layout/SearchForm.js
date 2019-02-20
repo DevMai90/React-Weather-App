@@ -13,11 +13,11 @@ class SearchForm extends Component {
 
   getWeather = async (dispatch, e) => {
     e.preventDefault();
-
     const { zipcode } = this.state;
+
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${
+        `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=${
           API_KEY.weatherAPI
         }`
       );
