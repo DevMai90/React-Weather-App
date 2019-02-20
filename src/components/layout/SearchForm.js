@@ -3,7 +3,6 @@ import { TextInput } from './TextInput';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
-import classnames from 'classnames';
 
 class SearchForm extends Component {
   state = {
@@ -36,23 +35,10 @@ class SearchForm extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, city, country, error } = value;
+          const { dispatch, error } = value;
           return (
             <React.Fragment>
               <div className="d-flex flex-column justify-content-center">
-                <div className="card mt-5 mb-3">
-                  <div
-                    className={classnames(
-                      'card-body bg-primary text-white text-center',
-                      { 'bg-danger': error }
-                    )}
-                  >
-                    <h3 className="display-3">
-                      {city ? `${city}, ${country}` : 'Weather Conditions'}
-                    </h3>
-                  </div>
-                </div>
-
                 <form
                   className="form-inline mb-2 justify-content-center"
                   onSubmit={this.getWeather.bind(this, dispatch)}
