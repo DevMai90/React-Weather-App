@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/layout/Header';
 import SearchForm from './components/layout/SearchForm';
-import WeatherCard from './components/weather/WeatherCard';
+import WeatherDashboard from './components/weather/WeatherDashboard';
 import Footer from './components/layout/Footer';
 
 import { Provider } from './context';
@@ -14,7 +14,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <SearchForm />
-          <WeatherCard />
+          <WeatherDashboard />
           <Footer />
         </div>
       </Provider>
