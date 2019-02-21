@@ -11,8 +11,14 @@ const reducer = (state, action) => {
         ...state,
         city: name,
         country,
-        temperature: list[0].weather[0].description,
-        location: action.payload,
+        list,
+        currentWeather: {
+          condition: list[0].weather[0].description,
+          temperature: (((list[0].main.temp - 273.15) * 9) / 5 + 32).toFixed(0),
+          humidity: list[0].main.humidity,
+          wind: list[0].wind.speed,
+          icon: list[0].weather[0].icon
+        },
         error: ''
       };
     case 'ERROR':
@@ -27,6 +33,10 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
+    city: '',
+    country: '',
+    list: '',
+    currentWeather: '',
     error: '',
     dispatch: action => this.setState(state => reducer(state, action))
   };
