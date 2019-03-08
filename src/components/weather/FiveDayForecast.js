@@ -36,15 +36,7 @@ class FiveDayForecast extends Component {
                   <h3>Five Day Forecast</h3>
                 </div>
               </div>
-              <div className="d-flex justify-content-center row-hl">
-                <div className="item-hl">
-                  <div className="card">
-                    <div className="card-title">
-                      {fiveDayList[0].dayOne.date}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <FiveDayDisplay forecast={fiveDayList} />
             </React.Fragment>
           );
         }}
