@@ -15,10 +15,10 @@ const FiveDayDisplay = props => {
   return (
     <div className="d-flex justify-content-around row-hl">
       <div className="item-hl">
-        <div className="card text-center">
+        <div className="card text-center border-primary">
           <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
-              {week[forecast[0].dayOne.date.getDay()]}
+              <h4>{week[forecast[0].dayOne.date.getDay()]}</h4>
             </div>
             <img
               src={`http://openweathermap.org/img/w/${
@@ -33,10 +33,10 @@ const FiveDayDisplay = props => {
       </div>
 
       <div className="item-hl">
-        <div className="card text-center">
+        <div className="card text-center border-primary">
           <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
-              {week[forecast[1].dayTwo.date.getDay()]}
+              <h4>{week[forecast[1].dayTwo.date.getDay()]}</h4>
             </div>
             <img
               src={`http://openweathermap.org/img/w/${
@@ -51,10 +51,10 @@ const FiveDayDisplay = props => {
       </div>
 
       <div className="item-hl">
-        <div className="card text-center">
+        <div className="card text-center border-primary">
           <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
-              {week[forecast[2].dayThree.date.getDay()]}
+              <h4>{week[forecast[2].dayThree.date.getDay()]}</h4>
             </div>
             <img
               src={`http://openweathermap.org/img/w/${
@@ -69,10 +69,10 @@ const FiveDayDisplay = props => {
       </div>
 
       <div className="item-hl">
-        <div className="card text-center">
+        <div className="card text-center border-primary">
           <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
-              {week[forecast[3].dayFour.date.getDay()]}
+              <h4>{week[forecast[3].dayFour.date.getDay()]}</h4>
             </div>
             <img
               src={`http://openweathermap.org/img/w/${
@@ -87,10 +87,10 @@ const FiveDayDisplay = props => {
       </div>
 
       <div className="item-hl">
-        <div className="card text-center">
+        <div className="card text-center border-primary">
           <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
-              {week[forecast[4].dayFive.date.getDay()]}
+              <h4>{week[forecast[4].dayFive.date.getDay()]}</h4>
             </div>
             <img
               src={`http://openweathermap.org/img/w/${
