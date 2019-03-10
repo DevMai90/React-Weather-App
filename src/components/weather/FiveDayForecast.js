@@ -18,7 +18,7 @@ class FiveDayForecast extends Component {
             <div className="container">
               <div className="card mt-2 mb-3">
                 <div className="card-body bg-primary text-white text-center">
-                  <h3>Five Day Forecast</h3>
+                  <h3 className="display-4">Five Day Forecast</h3>
                   {console.log(dailyForecast)}
                 </div>
               </div>
