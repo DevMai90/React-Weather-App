@@ -13,6 +13,9 @@ class SearchForm extends Component {
 
   onResetClick = (dispatch, e) => {
     e.preventDefault();
+
+    this.setState({ zipcode: '' });
+
     dispatch({
       type: 'RESET_FORM'
     });
