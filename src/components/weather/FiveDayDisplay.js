@@ -3,12 +3,20 @@ import React from 'react';
 const FiveDayDisplay = props => {
   const { forecast } = props;
 
-  const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const week = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
   return (
-    <div className="d-flex justify-content-center row-hl">
+    <div className="d-flex justify-content-around row-hl">
       <div className="item-hl">
-        <div className="card">
-          <div className="card-body">
+        <div className="card text-center">
+          <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
               {week[forecast[0].dayOne.date.getDay()]}
             </div>
@@ -19,13 +27,14 @@ const FiveDayDisplay = props => {
               alt=""
             />
             <h4>{forecast[0].dayOne.temperature}° F</h4>
+            <h5>{forecast[0].dayOne.condition}</h5>
           </div>
         </div>
       </div>
 
       <div className="item-hl">
-        <div className="card">
-          <div className="card-body">
+        <div className="card text-center">
+          <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
               {week[forecast[1].dayTwo.date.getDay()]}
             </div>
@@ -36,13 +45,14 @@ const FiveDayDisplay = props => {
               alt=""
             />
             <h4>{forecast[1].dayTwo.temperature}° F</h4>
+            <h5>{forecast[1].dayTwo.condition}</h5>
           </div>
         </div>
       </div>
 
       <div className="item-hl">
-        <div className="card">
-          <div className="card-body">
+        <div className="card text-center">
+          <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
               {week[forecast[2].dayThree.date.getDay()]}
             </div>
@@ -53,13 +63,14 @@ const FiveDayDisplay = props => {
               alt=""
             />
             <h4>{forecast[2].dayThree.temperature}° F</h4>
+            <h5>{forecast[2].dayThree.condition}</h5>
           </div>
         </div>
       </div>
 
       <div className="item-hl">
-        <div className="card">
-          <div className="card-body">
+        <div className="card text-center">
+          <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
               {week[forecast[3].dayFour.date.getDay()]}
             </div>
@@ -70,13 +81,14 @@ const FiveDayDisplay = props => {
               alt=""
             />
             <h4>{forecast[3].dayFour.temperature}° F</h4>
+            <h5>{forecast[3].dayFour.condition}</h5>
           </div>
         </div>
       </div>
 
       <div className="item-hl">
-        <div className="card">
-          <div className="card-body">
+        <div className="card text-center">
+          <div className="card-body" style={{ width: '200px' }}>
             <div className="card-title text-center">
               {week[forecast[4].dayFive.date.getDay()]}
             </div>
@@ -87,6 +99,7 @@ const FiveDayDisplay = props => {
               alt=""
             />
             <h4>{forecast[4].dayFive.temperature}° F</h4>
+            <h5>{forecast[4].dayFive.condition}</h5>
           </div>
         </div>
       </div>

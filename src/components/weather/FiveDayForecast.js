@@ -31,7 +31,7 @@ class FiveDayForecast extends Component {
 
           return (
             <React.Fragment>
-              <div className="card mt-5 mb-3">
+              <div className="card mt-3 mb-3">
                 <div className="card-body bg-primary text-white text-center">
                   <h3>Five Day Forecast</h3>
                 </div>
