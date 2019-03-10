@@ -3,15 +3,7 @@ import React from 'react';
 const FiveDayDisplay = props => {
   const { forecast } = props;
 
-  const week = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ];
+  const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
   return (
     <div className="d-flex justify-content-around row-hl">
       {forecast.map(day => {
@@ -20,12 +12,11 @@ const FiveDayDisplay = props => {
           <div className="item-hl" key={date}>
             <div
               className="card text-center border-primary"
-              style={{ width: '150px' }}
+              style={{ width: '150px', height: '200px' }}
             >
-              <div className="card-title">
-                <h4>{week[date]}</h4>
-              </div>
               <div className="card-body">
+                <h4>{week[date]}</h4>
+
                 <img
                   src={`http://openweathermap.org/img/w/${
                     day.weather[0].icon

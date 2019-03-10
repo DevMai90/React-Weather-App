@@ -15,7 +15,7 @@ class App extends Component {
           <Header />
           <SearchForm />
           <WeatherDashboard />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Provider>
     );

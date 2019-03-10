@@ -21,6 +21,15 @@ const reducer = (state, action) => {
         },
         error: ''
       };
+    case 'RESET_FORM':
+      return {
+        ...state,
+        city: '',
+        country: '',
+        list: '',
+        currentWeather: '',
+        error: ''
+      };
     case 'ERROR':
       return {
         ...state,

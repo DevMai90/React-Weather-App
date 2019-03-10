@@ -11,6 +11,14 @@ class SearchForm extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+  onResetClick = (dispatch, e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'RESET_FORM'
+    });
+    console.log(e);
+  };
+
   getWeather = async (dispatch, e) => {
     e.preventDefault();
     const { zipcode } = this.state;
@@ -37,26 +45,28 @@ class SearchForm extends Component {
         {value => {
           const { dispatch, error } = value;
           return (
-            <React.Fragment>
-              <div className="d-flex flex-column justify-content-center">
-                <form
-                  className="form-inline mb-2 justify-content-center"
-                  onSubmit={this.getWeather.bind(this, dispatch)}
+            <div className="d-flex row-hl justify-content-center">
+              <form
+                className="form-inline mb-2 item-hl"
+                onSubmit={this.getWeather.bind(this, dispatch)}
+              >
+                <TextInput
+                  type="text"
+                  name="zipcode"
+                  placeholder="Enter Zip Code..."
+                  value={this.state.zipcode}
+                  onChange={this.onChange}
+                  error={error}
+                />
+                <button className="btn btn-outline-primary mx-2">Search</button>
+                <div
+                  className="btn btn-outline-secondary item-hl"
+                  onClick={this.onResetClick.bind(this, dispatch)}
                 >
-                  <TextInput
-                    type="text"
-                    name="zipcode"
-                    placeholder="Enter Zip Code..."
-                    value={this.state.zipcode}
-                    onChange={this.onChange}
-                    error={error}
-                  />
-                  <button className="btn btn-outline-primary mx-2">
-                    Search
-                  </button>
-                </form>
-              </div>
-            </React.Fragment>
+                  Reset Form
+                </div>
+              </form>
+            </div>
           );
         }}
       </Consumer>
