@@ -3,7 +3,6 @@ import { Consumer } from '../../context';
 
 class CurrentWeather extends Component {
   render() {
-    // const { temperature, condition, icon, humidity, wind, convert } = props;
     return (
       <Consumer>
         {value => {
@@ -15,6 +14,7 @@ class CurrentWeather extends Component {
             wind,
             icon
           } = value.currentWeather;
+
           return (
             <div className="d-sm-flex justify-content-center row-hl">
               <div className="item-hl p-3 align-self-center">
