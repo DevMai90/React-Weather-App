@@ -8,7 +8,7 @@ class WeatherDashboard extends Component {
     return (
       <Consumer>
         {value => {
-          const { city, error } = value;
+          const { city, error, convertToUppercase } = value;
           const {
             condition,
             temperature,
@@ -26,6 +26,7 @@ class WeatherDashboard extends Component {
                     humidity={humidity}
                     wind={wind}
                     icon={icon}
+                    convert={convertToUppercase}
                   />
                   <FiveDayForecast />
                 </div>

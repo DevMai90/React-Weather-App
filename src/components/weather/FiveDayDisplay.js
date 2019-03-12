@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FiveDayDisplay = props => {
-  const { forecast } = props;
+  const { forecast, convert } = props;
 
   const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
   return (
@@ -23,10 +23,8 @@ const FiveDayDisplay = props => {
                   }.png`}
                   alt=""
                 />
-                <h4>
-                  {(((day.main.temp - 273.15) * 9) / 5 + 32).toFixed(0)}° F
-                </h4>
-                <p>{day.weather[0].description}</p>
+                <p>{(((day.main.temp - 273.15) * 9) / 5 + 32).toFixed(0)}° F</p>
+                <p>{convert(day.weather[0].description)}</p>
               </div>
             </div>
           </div>
