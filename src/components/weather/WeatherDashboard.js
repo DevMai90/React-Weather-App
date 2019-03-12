@@ -8,33 +8,18 @@ class WeatherDashboard extends Component {
     return (
       <Consumer>
         {value => {
-          const { city, error, convertToUppercase } = value;
-          const {
-            condition,
-            temperature,
-            humidity,
-            wind,
-            icon
-          } = value.currentWeather;
-          return (
-            <React.Fragment>
-              {city ? (
-                <div className="container">
-                  <CurrentWeather
-                    temperature={temperature}
-                    condition={condition}
-                    humidity={humidity}
-                    wind={wind}
-                    icon={icon}
-                    convert={convertToUppercase}
-                  />
-                  <FiveDayForecast />
-                </div>
-              ) : (
-                <h3 className="text-danger text-center">{error}</h3>
-              )}
-            </React.Fragment>
-          );
+          const { city, error } = value;
+
+          if (city) {
+            return (
+              <div className="container">
+                <CurrentWeather />
+                <FiveDayForecast />
+              </div>
+            );
+          } else {
+            return <h3 className="text-danger text-center">{error}</h3>;
+          }
         }}
       </Consumer>
     );
