@@ -66,7 +66,7 @@ class SearchForm extends Component {
                   className="btn btn-outline-secondary item-hl"
                   onClick={this.onResetClick.bind(this, dispatch)}
                 >
-                  Reset Form
+                  Reset
                 </div>
               </form>
             </div>
