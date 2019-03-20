@@ -8,15 +8,17 @@ const FiveDayDisplay = props => {
     <div className="d-flex justify-content-around row-hl">
       {forecast.map(day => {
         let date = new Date(day.dt_txt).getDay();
+        let shortDate = day.dt_txt.substring(5, 10);
         return (
           <div className="item-hl" key={date}>
             <div
               className="card text-center border-primary"
-              style={{ width: '150px', height: '200px' }}
+              style={{ width: '150px', height: '225px' }}
             >
               <div className="card-body">
                 <h4>{week[date]}</h4>
-
+                <small>{shortDate}</small>
+                <br />
                 <img
                   src={`http://openweathermap.org/img/w/${
                     day.weather[0].icon
