@@ -16,22 +16,28 @@ class CurrentWeather extends Component {
           } = value.currentWeather;
 
           return (
-            <div className="d-sm-flex justify-content-center row-hl">
-              <div className="item-hl p-3 align-self-center">
-                <h2 className="display-3">
-                  <strong>{temperature}° F</strong>
-                </h2>
-              </div>
-              <div className="item-hl p-3">
-                <h5>
-                  {convertToUppercase(condition)}
-                  <img
-                    src={`http://openweathermap.org/img/w/${icon}.png`}
-                    alt=""
-                  />
-                </h5>
-                <h5>Humidity: {humidity}%</h5>
-                <h5>Wind Speed: {wind} MPH</h5>
+            <div className="row justify-content-center py-1">
+              <div className="col-5">
+                <div className="card border-primary">
+                  <div className="row align-items-center">
+                    <div className="col-md-5 text-center">
+                      <h2 className="">
+                        <strong>{temperature}° F</strong>
+                      </h2>
+                    </div>
+                    <div className="col-md-7">
+                      <p>
+                        {convertToUppercase(condition)}
+                        <img
+                          src={`http://openweathermap.org/img/w/${icon}.png`}
+                          alt=""
+                        />
+                      </p>
+                      <p>Humidity: {humidity}%</p>
+                      <p>Wind Speed: {wind} MPH</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           );

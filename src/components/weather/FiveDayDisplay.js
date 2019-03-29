@@ -5,12 +5,12 @@ const FiveDayDisplay = props => {
 
   const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
   return (
-    <div className="d-flex justify-content-around row-hl">
+    <div className="row">
       {forecast.map(day => {
         let date = new Date(day.dt_txt).getDay();
         let shortDate = day.dt_txt.substring(5, 10);
         return (
-          <div className="item-hl" key={date}>
+          <div className="col-sm-2 mx-auto" key={date}>
             <div
               className="card text-center border-primary"
               style={{ width: '150px', height: '225px' }}
