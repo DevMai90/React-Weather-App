@@ -21,20 +21,20 @@ class CurrentWeather extends Component {
                 <div className="card border-primary">
                   <div className="row align-items-center">
                     <div className="col-md-5 text-center">
-                      <h2 className="">
+                      <h2 className="display-4">
                         <strong>{temperature}° F</strong>
                       </h2>
                     </div>
                     <div className="col-md-7">
-                      <p>
+                      <p style={{ marginBottom: 0 }}>
                         {convertToUppercase(condition)}
                         <img
                           src={`http://openweathermap.org/img/w/${icon}.png`}
                           alt=""
                         />
                       </p>
-                      <p>Humidity: {humidity}%</p>
-                      <p>Wind Speed: {wind} MPH</p>
+                      <p style={{ margin: 0 }}>Humidity: {humidity}%</p>
+                      <p style={{ marginTop: 0 }}>Wind Speed: {wind} MPH</p>
                     </div>
                   </div>
                 </div>
