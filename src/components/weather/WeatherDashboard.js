@@ -18,7 +18,11 @@ class WeatherDashboard extends Component {
               </div>
             );
           } else {
-            return <h3 className="text-danger text-center">{error}</h3>;
+            return (
+              <div className="text-center">
+                <small className="text-danger text-center">{error}</small>
+              </div>
+            );
           }
         }}
       </Consumer>
