@@ -19,6 +19,7 @@ const reducer = (state, action) => {
           wind: list[0].wind.speed,
           icon: list[0].weather[0].icon
         },
+        loading: false,
         error: ''
       };
     case 'RESET_FORM':
@@ -29,12 +30,22 @@ const reducer = (state, action) => {
         list: '',
         currentWeather: '',
         error: '',
-        loading: true
+        loading: false
       };
     case 'ERROR':
       return {
         ...state,
-        error: action.payload
+        city: '',
+        country: '',
+        list: '',
+        currentWeather: '',
+        error: action.payload,
+        loading: false
+      };
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;
@@ -48,6 +59,7 @@ export class Provider extends Component {
     list: '',
     currentWeather: '',
     error: '',
+    loading: false,
     convertToUppercase: function(string) {
       return string
         .split(' ')
