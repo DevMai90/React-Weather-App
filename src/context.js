@@ -45,6 +45,11 @@ const reducer = (state, action) => {
     case 'LOADING':
       return {
         ...state,
+        city: '',
+        country: '',
+        list: '',
+        currentWeather: '',
+        error: '',
         loading: true
       };
     default:
