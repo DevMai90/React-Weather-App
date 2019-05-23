@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import Spinner from '../layout/Spinner';
 import classnames from 'classnames';
 
 class Header extends Component {
@@ -7,7 +8,7 @@ class Header extends Component {
     return (
       <Consumer>
         {value => {
-          const { city, country, error } = value;
+          const { city, country, error, loading } = value;
 
           return (
             <div className="container">
@@ -18,9 +19,13 @@ class Header extends Component {
                     { 'bg-danger': error }
                   )}
                 >
-                  <h1 className="display-4">
-                    {city ? `${city}, ${country}` : 'Weather Conditions'}
-                  </h1>
+                  {loading ? (
+                    <Spinner color="text-white" />
+                  ) : (
+                    <h1 className="display-4">
+                      {city ? `${city}, ${country}` : 'Weather Conditions'}
+                    </h1>
+                  )}
                 </div>
               </div>
             </div>

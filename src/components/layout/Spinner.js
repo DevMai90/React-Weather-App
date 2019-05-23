@@ -1,13 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Spinner = () => {
+const Spinner = ({ color }) => {
   return (
     <div className="d-flex justify-content-center">
-      <div className="spinner-border text-primary m-auto" role="status">
+      <div className={`spinner-border text-${color} m-auto`} role="status">
         <span className="sr-only">Loading...</span>
       </div>
     </div>
   );
+};
+
+Spinner.defaultProps = {
+  color: 'primary'
+};
+
+Spinner.propTypes = {
+  color: PropTypes.string.isRequired
 };
 
 export default Spinner;

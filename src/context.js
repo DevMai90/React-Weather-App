@@ -66,12 +66,6 @@ export class Provider extends Component {
     currentWeather: '',
     error: '',
     loading: false,
-    convertToUppercase: function(string) {
-      return string
-        .split(' ')
-        .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-        .join(' ');
-    },
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
