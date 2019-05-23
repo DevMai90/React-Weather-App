@@ -24,3 +24,6 @@ yarn-error.log*
 
 # API Keys
 APIKeys.*
+
+#Sass folder
+/scss
