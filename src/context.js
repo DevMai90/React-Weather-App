@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import convertTemp from './utils/convertTemp';
 
 const Context = React.createContext();
 
@@ -14,7 +15,7 @@ const reducer = (state, action) => {
         list,
         currentWeather: {
           condition: list[0].weather[0].description,
-          temperature: (((list[0].main.temp - 273.15) * 9) / 5 + 32).toFixed(0),
+          temperature: convertTemp(list[0].main.temp),
           humidity: list[0].main.humidity,
           wind: list[0].wind.speed,
           icon: list[0].weather[0].icon
