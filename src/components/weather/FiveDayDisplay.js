@@ -12,7 +12,7 @@ const FiveDayDisplay = props => {
         return (
           <div className="col-xs-auto mx-auto" key={date}>
             <div
-              className="card text-center border-primary item-hl"
+              className="card text-center border-primary item-hl mt-2"
               style={{ width: '150px', height: '225px' }}
               key={date}
             >

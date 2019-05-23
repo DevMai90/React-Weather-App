@@ -18,7 +18,7 @@ class Header extends Component {
                     { 'bg-danger': error }
                   )}
                 >
-                  <h1 className="display-3">
+                  <h1 className="display-4">
                     {city ? `${city}, ${country}` : 'Weather Conditions'}
                   </h1>
                 </div>

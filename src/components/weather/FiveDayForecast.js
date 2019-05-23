@@ -16,7 +16,7 @@ class FiveDayForecast extends Component {
 
           return (
             <Fragment>
-              <div className="card mt-2 mb-3">
+              <div className="card mt-2 mb-1">
                 <div className="card-body bg-primary text-white text-center">
                   <h3 className="display-4">Five Day Forecast</h3>
                 </div>

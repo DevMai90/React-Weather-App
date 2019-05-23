@@ -28,7 +28,8 @@ const reducer = (state, action) => {
         country: '',
         list: '',
         currentWeather: '',
-        error: ''
+        error: '',
+        loading: true
       };
     case 'ERROR':
       return {

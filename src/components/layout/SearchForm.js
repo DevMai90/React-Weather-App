@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { TextInput } from './TextInput';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
-
+import classnames from 'classnames';
 class SearchForm extends Component {
   state = {
     zipcode: ''
@@ -50,23 +49,36 @@ class SearchForm extends Component {
           return (
             <div className="d-flex row-hl justify-content-center">
               <form
-                className="form-inline mb-2 item-hl"
+                className="form-inline mb-2"
                 onSubmit={this.getWeather.bind(this, dispatch)}
               >
-                <TextInput
-                  type="text"
-                  name="zipcode"
-                  placeholder="Enter Zip Code..."
-                  value={this.state.zipcode}
-                  onChange={this.onChange}
-                  error={error}
-                />
-                <button className="btn btn-outline-primary mx-2">Search</button>
-                <div
-                  className="btn btn-outline-secondary item-hl"
-                  onClick={this.onResetClick.bind(this, dispatch)}
-                >
-                  Reset
+                <div className="form-group">
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className={classnames('form-control', {
+                        'is-invalid': error
+                      })}
+                      name="zipcode"
+                      placeholder="Enter Zip Code..."
+                      value={this.state.zipcode}
+                      onChange={this.onChange}
+                      error={error}
+                    />
+                    <div className="input-group-append">
+                      <button className="btn btn-outline-primary ">
+                        Search
+                      </button>
+                    </div>
+                    <div className="input-group-append">
+                      <button
+                        className="btn btn-outline-secondary"
+                        onClick={this.onResetClick.bind(this, dispatch)}
+                      >
+                        Reset
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
