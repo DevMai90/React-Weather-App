@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Consumer } from '../../context';
 import FiveDayDisplay from './FiveDayDisplay';
 
@@ -15,7 +15,7 @@ class FiveDayForecast extends Component {
           }
 
           return (
-            <React.Fragment>
+            <Fragment>
               <div className="card mt-2 mb-3">
                 <div className="card-body bg-primary text-white text-center">
                   <h3 className="display-4">Five Day Forecast</h3>
@@ -25,7 +25,7 @@ class FiveDayForecast extends Component {
                 forecast={dailyForecast}
                 convert={convertToUppercase}
               />
-            </React.Fragment>
+            </Fragment>
           );
         }}
       </Consumer>

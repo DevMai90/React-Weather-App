@@ -10,10 +10,11 @@ const FiveDayDisplay = props => {
         let date = new Date(day.dt_txt).getDay();
         let shortDate = day.dt_txt.substring(5, 10);
         return (
-          <div className="col-sm-2 mx-auto" key={date}>
+          <div className="col-xs-auto mx-auto" key={date}>
             <div
-              className="card text-center border-primary"
+              className="card text-center border-primary item-hl"
               style={{ width: '150px', height: '225px' }}
+              key={date}
             >
               <div className="card-body">
                 <h4>{week[date]}</h4>

@@ -29,6 +29,7 @@ class CurrentWeather extends Component {
                       <img
                         className="my-0"
                         src={`http://openweathermap.org/img/w/${icon}.png`}
+                        alt=""
                       />
                       <p className="m-0">{convertToUppercase(condition)}</p>
                       <p className="m-0">Humidity: {humidity}%</p>
