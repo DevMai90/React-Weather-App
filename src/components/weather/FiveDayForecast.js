@@ -7,7 +7,7 @@ class FiveDayForecast extends Component {
     return (
       <Consumer>
         {value => {
-          const { list, convertToUppercase } = value;
+          const { list } = value;
           let dailyForecast = [];
 
           for (let i = 0; i < list.length; i += 8) {
@@ -21,10 +21,7 @@ class FiveDayForecast extends Component {
                   <h3 className="display-4">Five Day Forecast</h3>
                 </div>
               </div>
-              <FiveDayDisplay
-                forecast={dailyForecast}
-                convert={convertToUppercase}
-              />
+              <FiveDayDisplay forecast={dailyForecast} />
             </Fragment>
           );
         }}

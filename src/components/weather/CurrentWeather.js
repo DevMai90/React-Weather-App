@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import convertUppercase from '../../utils/convertUppercase';
 
 class CurrentWeather extends Component {
   render() {
     return (
       <Consumer>
         {value => {
-          const { convertToUppercase } = value;
           const {
             condition,
             temperature,
@@ -31,7 +31,7 @@ class CurrentWeather extends Component {
                         src={`http://openweathermap.org/img/w/${icon}.png`}
                         alt=""
                       />
-                      <p className="m-0">{convertToUppercase(condition)}</p>
+                      <p className="m-0">{convertUppercase(condition)}</p>
                       <p className="m-0">Humidity: {humidity}%</p>
                       <p className="mt-0">Wind Speed: {wind} MPH</p>
                     </div>

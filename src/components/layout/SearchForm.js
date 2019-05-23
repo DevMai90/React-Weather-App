@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
