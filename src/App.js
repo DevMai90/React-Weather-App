@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 
 import { Provider } from './context';
 import './bootstrap.css';
+import './App.css';
 
 class App extends Component {
   render() {
@@ -15,7 +16,7 @@ class App extends Component {
           <Header />
           <SearchForm />
           <WeatherDashboard />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Provider>
     );
