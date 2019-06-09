@@ -7,8 +7,15 @@ import Spinner from './Spinner';
 
 class SearchForm extends Component {
   state = {
-    zipcode: ''
+    zipcode: '',
+    coordinates: ''
   };
+
+  componentDidMount() {
+    this.findGeolocation();
+    // console.log(this.findGeolocation());
+    // this.setState({ coordinates: this.findGeolocation() });
+  }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -33,6 +40,9 @@ class SearchForm extends Component {
         `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=${
           API_KEY.weatherAPI
         }`
+        // `https://api.openweathermap.org/data/2.5/weather?lat=37.409287899999995&lon=-121.8839901&appid=${
+        //   API_KEY.weatherAPI
+        // }`
       );
 
       dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
@@ -44,24 +54,27 @@ class SearchForm extends Component {
     }
   };
 
-  geoFindMe() {
-    function success(position) {
+  findGeolocation = () => {
+    const success = position => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
       console.log(`${latitude}, ${longitude}`);
-    }
+      console.log(position.coords);
 
-    function error() {
+      this.setState({ coordinates: latitude });
+    };
+
+    const error = () => {
       return console.log('Unable to retrieve location');
-    }
+    };
 
     if (!navigator.geolocation) {
-      return 'FAILED';
+      return 'Geolocation is unavailable';
     } else {
       navigator.geolocation.getCurrentPosition(success, error);
     }
-  }
+  };
 
   render() {
     return (
@@ -98,18 +111,18 @@ class SearchForm extends Component {
                       </div>
                       <div className="input-group-append">
                         <button
-                          className="btn btn-outline-secondary"
-                          onClick={this.onResetClick.bind(this, dispatch)}
+                          className="btn btn-outline-primary"
+                          onClick={this.findGeolocation}
                         >
-                          Reset
+                          Locate
                         </button>
                       </div>
                       <div className="input-group-append">
                         <button
                           className="btn btn-outline-secondary"
-                          onClick={this.geoFindMe}
+                          onClick={this.onResetClick.bind(this, dispatch)}
                         >
-                          Locate
+                          Reset
                         </button>
                       </div>
                     </div>

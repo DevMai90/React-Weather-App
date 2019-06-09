@@ -30,6 +30,8 @@ const reducer = (state, action) => {
         country: '',
         list: '',
         currentWeather: '',
+        longitude: '',
+        latitude: '',
         error: '',
         loading: false
       };
@@ -40,6 +42,8 @@ const reducer = (state, action) => {
         country: '',
         list: '',
         currentWeather: '',
+        longitude: '',
+        latitude: '',
         error: action.payload,
         loading: false
       };
@@ -64,6 +68,8 @@ export class Provider extends Component {
     country: '',
     list: '',
     currentWeather: '',
+    longitude: '',
+    latitude: '',
     error: '',
     loading: false,
     dispatch: action => this.setState(state => reducer(state, action))
