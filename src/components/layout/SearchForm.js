@@ -44,6 +44,25 @@ class SearchForm extends Component {
     }
   };
 
+  geoFindMe() {
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      console.log(`${latitude}, ${longitude}`);
+    }
+
+    function error() {
+      return console.log('Unable to retrieve location');
+    }
+
+    if (!navigator.geolocation) {
+      return 'FAILED';
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }
+
   render() {
     return (
       <Consumer>
@@ -85,8 +104,17 @@ class SearchForm extends Component {
                           Reset
                         </button>
                       </div>
+                      <div className="input-group-append">
+                        <button
+                          className="btn btn-outline-secondary"
+                          onClick={this.geoFindMe}
+                        >
+                          Locate
+                        </button>
+                      </div>
                     </div>
                   </div>
+                  {/* {console.log(navigator.geolocation.getCurrentPosition())} */}
                 </form>
               </div>
             );
