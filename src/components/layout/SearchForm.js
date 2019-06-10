@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Consumer } from '../../context';
 import classnames from 'classnames';
 import Spinner from './Spinner';
+import SearchGeo from './SearchGeo';
 
 class SearchForm extends Component {
   state = {
@@ -73,6 +74,8 @@ class SearchForm extends Component {
 
     const error = () => {
       console.log('Unable to retrieve location');
+
+      this.setState({ findCoordinates: false });
     };
 
     if (!navigator.geolocation) {
@@ -98,31 +101,7 @@ class SearchForm extends Component {
                   onSubmit={this.getWeather.bind(this, dispatch)}
                 >
                   {this.state.coordinates ? (
-                    <div className="form-group">
-                      <div className="input-group">
-                        <div className="input-group-append">
-                          <button className="btn btn-outline-primary ">
-                            Search
-                          </button>
-                        </div>
-                        <div className="input-group-append">
-                          <button
-                            className="btn btn-outline-primary"
-                            onClick={this.findGeolocation}
-                          >
-                            Locate
-                          </button>
-                        </div>
-                        <div className="input-group-append">
-                          <button
-                            className="btn btn-outline-secondary"
-                            onClick={this.onResetClick.bind(this, dispatch)}
-                          >
-                            Reset
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    <SearchGeo />
                   ) : (
                     <div className="form-group">
                       <div className="input-group">
