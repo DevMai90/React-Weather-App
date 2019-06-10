@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
-import classnames from 'classnames';
 import Spinner from './Spinner';
 import SearchGeo from './SearchGeo';
+import SearchZip from './SearchZip';
 
 class SearchForm extends Component {
   state = {
@@ -63,23 +63,17 @@ class SearchForm extends Component {
 
   findGeolocation = () => {
     const success = position => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      console.log(`${latitude}, ${longitude}`);
-      console.log(position.coords);
-
       this.setState({ coordinates: position.coords, findCoordinates: false });
     };
 
     const error = () => {
-      console.log('Unable to retrieve location');
-
       this.setState({ findCoordinates: false });
+
+      console.log('Unable to retrieve location');
     };
 
     if (!navigator.geolocation) {
-      return 'Geolocation is unavailable';
+      return console.log('Geolocation is unavailable');
     } else {
       navigator.geolocation.getCurrentPosition(success, error);
     }
@@ -101,44 +95,17 @@ class SearchForm extends Component {
                   onSubmit={this.getWeather.bind(this, dispatch)}
                 >
                   {this.state.coordinates ? (
-                    <SearchGeo />
+                    <SearchGeo
+                      onResetClick={this.onResetClick.bind(this, dispatch)}
+                    />
                   ) : (
-                    <div className="form-group">
-                      <div className="input-group">
-                        <input
-                          type="text"
-                          className={classnames('form-control', {
-                            'is-invalid': error
-                          })}
-                          name="zipcode"
-                          placeholder="Enter Zip Code..."
-                          value={this.state.zipcode}
-                          onChange={this.onChange}
-                          error={error}
-                        />
-                        <div className="input-group-append">
-                          <button className="btn btn-outline-primary ">
-                            Search
-                          </button>
-                        </div>
-                        {/* <div className="input-group-append">
-                        <button
-                          className="btn btn-outline-primary"
-                          onClick={this.findGeolocation}
-                        >
-                          Locate
-                        </button>
-                      </div> */}
-                        <div className="input-group-append">
-                          <button
-                            className="btn btn-outline-secondary"
-                            onClick={this.onResetClick.bind(this, dispatch)}
-                          >
-                            Reset
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    <SearchZip
+                      error={error}
+                      value={this.state.zipcode}
+                      onChange={this.onChange}
+                      dispatch={dispatch}
+                      onResetClick={this.onResetClick.bind(this, dispatch)}
+                    />
                   )}
                 </form>
               </div>
