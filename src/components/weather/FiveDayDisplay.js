@@ -23,7 +23,7 @@ const FiveDayDisplay = ({ forecast }) => {
                 <small>{shortDate}</small>
                 <br />
                 <img
-                  src={`http://openweathermap.org/img/w/${
+                  src={`https://openweathermap.org/img/w/${
                     day.weather[0].icon
                   }.png`}
                   alt=""

@@ -28,7 +28,7 @@ class CurrentWeather extends Component {
                     <div className="col-lg-7 text-center text-lg-left">
                       <img
                         className="my-0"
-                        src={`http://openweathermap.org/img/w/${icon}.png`}
+                        src={`https://openweathermap.org/img/w/${icon}.png`}
                         alt=""
                       />
                       <p className="m-0">{convertUppercase(condition)}</p>
