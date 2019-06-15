@@ -16,7 +16,6 @@ const FiveDayDisplay = ({ forecast }) => {
             <div
               className="card text-center border-primary item-hl mt-2"
               style={{ width: '150px', height: '225px' }}
-              key={date}
             >
               <div className="card-body">
                 <h4>{shortDate}</h4>
