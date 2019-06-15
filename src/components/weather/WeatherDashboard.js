@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import TodayForecast from './TodayForecast';
 import FiveDayForecast from './FiveDayForecast';
 import CurrentWeather from './CurrentWeather';
 
@@ -14,6 +15,7 @@ class WeatherDashboard extends Component {
             return (
               <div className="container">
                 <CurrentWeather />
+                <TodayForecast />
                 <FiveDayForecast />
               </div>
             );
