@@ -19,8 +19,8 @@ const FiveDayDisplay = ({ forecast }) => {
               key={date}
             >
               <div className="card-body">
-                <h4>{week[date]}</h4>
-                <small>{shortDate}</small>
+                <h4>{shortDate}</h4>
+                <small>{week[date]}</small>
                 <br />
                 <img
                   src={`https://openweathermap.org/img/w/${
