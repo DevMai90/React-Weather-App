@@ -89,25 +89,27 @@ class SearchForm extends Component {
             return <Spinner />;
           } else {
             return (
-              <div className="d-flex row-hl justify-content-center">
-                <form
-                  className="form-inline mb-2"
-                  onSubmit={this.getWeather.bind(this, dispatch)}
-                >
-                  {this.state.coordinates ? (
-                    <SearchGeo
-                      onResetClick={this.onResetClick.bind(this, dispatch)}
-                    />
-                  ) : (
-                    <SearchZip
-                      error={error}
-                      value={this.state.zipcode}
-                      onChange={this.onChange}
-                      dispatch={dispatch}
-                      onResetClick={this.onResetClick.bind(this, dispatch)}
-                    />
-                  )}
-                </form>
+              <div className="border border-primary p-2">
+                <div className="d-flex flex-row justify-content-center">
+                  <form
+                    className="form-inline"
+                    onSubmit={this.getWeather.bind(this, dispatch)}
+                  >
+                    {this.state.coordinates ? (
+                      <SearchGeo
+                        onResetClick={this.onResetClick.bind(this, dispatch)}
+                      />
+                    ) : (
+                      <SearchZip
+                        error={error}
+                        value={this.state.zipcode}
+                        onChange={this.onChange}
+                        dispatch={dispatch}
+                        onResetClick={this.onResetClick.bind(this, dispatch)}
+                      />
+                    )}
+                  </form>
+                </div>
               </div>
             );
           }

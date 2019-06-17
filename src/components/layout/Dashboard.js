@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import CurrentWeather from '../weather/CurrentWeather';
 import Header from './Header';
+import SearchForm from './SearchForm';
 
 class Dashboard extends Component {
   render() {
@@ -14,11 +15,11 @@ class Dashboard extends Component {
             <div className="container">
               <header className="mt-3" id="main-header">
                 <div className="row no-gutters">
-                  <div className="col-lg-4 col-md-5">
-                    {city && <CurrentWeather />}
-                  </div>
-                  <div className="col-lg-8 col-md-5">
-                    <Header />
+                  <div className="col">
+                    <div className="d-flex flex-column">
+                      <Header />
+                      <SearchForm />
+                    </div>
                   </div>
                 </div>
               </header>

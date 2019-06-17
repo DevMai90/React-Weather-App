@@ -11,7 +11,7 @@ class Header extends Component {
           const { city, country, error, loading } = value;
 
           return (
-            <div className="card">
+            <div className="bg-primary">
               <div
                 className={classnames(
                   'card-body bg-primary text-white text-center',

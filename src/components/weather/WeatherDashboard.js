@@ -14,7 +14,7 @@ class WeatherDashboard extends Component {
           if (city) {
             return (
               <div className="container">
-                {/* <CurrentWeather /> */}
+                <CurrentWeather />
                 <TodayForecast />
                 <FiveDayForecast />
               </div>
