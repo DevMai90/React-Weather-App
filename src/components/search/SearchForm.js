@@ -85,12 +85,12 @@ class SearchForm extends Component {
         {value => {
           const { dispatch, error, loading } = value;
 
-          if (loading || this.state.findCoordinates) {
-            return <Spinner />;
-          } else {
-            return (
-              <div className="border border-primary p-2">
-                <div className="d-flex flex-row justify-content-center">
+          return (
+            <div className="border border-primary p-2">
+              <div className="d-flex flex-row justify-content-center">
+                {loading || this.state.findCoordinates ? (
+                  <Spinner />
+                ) : (
                   <form
                     className="form-inline"
                     onSubmit={this.getWeather.bind(this, dispatch)}
@@ -109,10 +109,10 @@ class SearchForm extends Component {
                       />
                     )}
                   </form>
-                </div>
+                )}
               </div>
-            );
-          }
+            </div>
+          );
         }}
       </Consumer>
     );

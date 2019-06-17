@@ -15,14 +15,26 @@ class WeatherDashboard extends Component {
             return (
               <div>
                 <div className="d-flex flex-row align-items-stretch text-center">
-                  <div className="bg-secondary text-white w-100 pt-1">
-                    <h6>Current Weather</h6>
+                  <div
+                    className="port-item bg-secondary text-white w-100 p-4"
+                    data-toggle="collapse"
+                    data-target="#currentWeather"
+                  >
+                    <span>Current Weather</span>
                   </div>
-                  <div className="bg-warning text-white w-100 pt-1">
-                    <h6>Current Weather</h6>
+                  <div
+                    className="port-item bg-warning text-white w-100 p-4"
+                    data-toggle="collapse"
+                    data-target="#todayForecast"
+                  >
+                    <span>12-Hour Forecast</span>
                   </div>
-                  <div className="bg-info text-white w-100 pt-1">
-                    <h6>Current Weather</h6>
+                  <div
+                    className="port-item bg-info text-white w-100 p-4"
+                    data-toggle="collapse"
+                    data-target="#fiveDayForecast"
+                  >
+                    <span>5-Day Forecast</span>
                   </div>
                 </div>
                 <CurrentWeather />
