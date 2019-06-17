@@ -1,6 +1,7 @@
 import React from 'react';
 import convertTemp from '../../utils/convertTemp';
 import convertUppercase from '../../utils/convertUppercase';
+import convertTime from '../../utils/convertTime';
 import PropTypes from 'prop-types';
 
 const TodayForecastDisplay = ({ forecast }) => {
@@ -8,10 +9,7 @@ const TodayForecastDisplay = ({ forecast }) => {
     <div className="row">
       {forecast.map(hour => {
         let shortDate = hour.dt_txt.substring(5, 10);
-        let milTime = new Date(`${hour.dt_txt} UTC`).getHours();
-        let time;
-        if (milTime <= 12) time = `${milTime}:00AM`;
-        else time = `${milTime - 12}:00PM`;
+        let time = convertTime(hour.dt_txt);
 
         return (
           <div className="col-xs-auto mx-auto" key={time}>
