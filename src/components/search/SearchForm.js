@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
-import Spinner from './Spinner';
+import Spinner from '../layout/Spinner';
 import SearchGeo from './SearchGeo';
 import SearchZip from './SearchZip';
 

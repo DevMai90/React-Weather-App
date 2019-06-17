@@ -13,7 +13,18 @@ class WeatherDashboard extends Component {
 
           if (city) {
             return (
-              <div className="container">
+              <div>
+                <div className="d-flex flex-row align-items-stretch text-center">
+                  <div className="bg-secondary text-white w-100 pt-1">
+                    <h6>Current Weather</h6>
+                  </div>
+                  <div className="bg-warning text-white w-100 pt-1">
+                    <h6>Current Weather</h6>
+                  </div>
+                  <div className="bg-info text-white w-100 pt-1">
+                    <h6>Current Weather</h6>
+                  </div>
+                </div>
                 <CurrentWeather />
                 <TodayForecast />
                 <FiveDayForecast />

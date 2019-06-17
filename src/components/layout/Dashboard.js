@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
-import CurrentWeather from '../weather/CurrentWeather';
 import Header from './Header';
-import SearchForm from './SearchForm';
+import SearchForm from '../search/SearchForm';
+import WeatherDashboard from '../weather/WeatherDashboard';
 
 class Dashboard extends Component {
   render() {
     return (
       <Consumer>
         {value => {
-          const { city, error } = value;
-
           return (
             <div className="container">
               <header className="mt-3" id="main-header">
@@ -19,6 +17,7 @@ class Dashboard extends Component {
                     <div className="d-flex flex-column">
                       <Header />
                       <SearchForm />
+                      <WeatherDashboard />
                     </div>
                   </div>
                 </div>

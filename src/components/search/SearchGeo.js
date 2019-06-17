@@ -6,7 +6,7 @@ const SearchGeo = ({ onResetClick }) => {
       <div className="input-group">
         <div className="btn-group" role="group">
           <button className="btn btn-outline-primary ">
-            Get weather forecast!
+            Search By Current Location
           </button>
           <button className="btn btn-outline-secondary" onClick={onResetClick}>
             Reset

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Dashboard from './components/layout/Dashboard';
-
-import Header from './components/layout/Header';
-import SearchForm from './components/layout/SearchForm';
-import WeatherDashboard from './components/weather/WeatherDashboard';
 import Footer from './components/layout/Footer';
 
 import { Provider } from './context';
@@ -16,9 +12,6 @@ class App extends Component {
       <Provider>
         <div className="App">
           <Dashboard />
-          {/* <Header /> */}
-          {/* <SearchForm /> */}
-          <WeatherDashboard />
           <Footer />
         </div>
       </Provider>
