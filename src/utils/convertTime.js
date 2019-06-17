@@ -1,11 +1,19 @@
 // Convert response time to local format.
 const convertTime = time => {
-  let milTime = new Date(`${time} UTC`).getHours();
+  let currentTime = new Date(`${time} UTC`);
   let localTime;
-  if (milTime <= 12) localTime = `${milTime}:00AM`;
-  else localTime = `${milTime - 12}:00PM`;
+  if (currentTime.getHours() <= 12)
+    localTime = `${currentTime.getHours()}:${addZero(
+      currentTime.getMinutes()
+    )}AM`;
+  else
+    localTime = `${currentTime.getHours() - 12}:${addZero(
+      currentTime.getMinutes()
+    )}PM`;
 
   return localTime;
 };
+
+const addZero = n => (parseInt(n, 10) < 10 ? '0' : '') + n;
 
 export default convertTime;
