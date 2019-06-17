@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Dashboard from './components/layout/Dashboard';
+
 import Header from './components/layout/Header';
 import SearchForm from './components/layout/SearchForm';
 import WeatherDashboard from './components/weather/WeatherDashboard';
@@ -13,7 +15,8 @@ class App extends Component {
     return (
       <Provider>
         <div className="App">
-          <Header />
+          <Dashboard />
+          {/* <Header /> */}
           <SearchForm />
           <WeatherDashboard />
           <Footer />
