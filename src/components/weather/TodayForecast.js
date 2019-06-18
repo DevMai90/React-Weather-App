@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Consumer } from '../../context';
 import TodayForecastDisplay from './TodayForecastDisplay';
+import PropTypes from 'prop-types';
 
 class TodayForecast extends Component {
   render() {
+    const { isOpen } = this.props;
     return (
       <Consumer>
         {value => {
@@ -12,12 +14,20 @@ class TodayForecast extends Component {
 
           return (
             <Fragment>
-              <div className="card mt-2 bm-1">
-                <div className="card-body bg-primary text-white text-center">
-                  <h3 className="display-4">Today's Forecast</h3>
-                </div>
-              </div>
-              <TodayForecastDisplay forecast={todayForecast} />
+              {isOpen && (
+                <Fragment>
+                  <div className="card card-body bg-warning">
+                    <div className="row">
+                      <div className="col-10 mx-auto">
+                        <div className="card card-body">
+                          <h4 className="text-center m-0">12-Hour Forecast</h4>
+                          <TodayForecastDisplay forecast={todayForecast} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Fragment>
+              )}
             </Fragment>
           );
         }}
@@ -25,5 +35,9 @@ class TodayForecast extends Component {
     );
   }
 }
+
+TodayForecast.propTypes = {
+  isOpen: PropTypes.bool.isRequired
+};
 
 export default TodayForecast;

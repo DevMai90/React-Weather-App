@@ -5,6 +5,7 @@ import convertTemp from '../../utils/convertTemp';
 import convertTime from '../../utils/convertTime';
 import convertWindDirection from '../../utils/convertWindDirection';
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
 
 class CurrentWeather extends Component {
   render() {
@@ -27,9 +28,9 @@ class CurrentWeather extends Component {
             <Fragment>
               {isOpen && (
                 <div
-                  id="currentForecast"
-                  className="collapse show"
-                  name="currentForecast"
+                // id="currentForecast"
+                // className="collapse show"
+                // name="currentForecast"
                 >
                   <div className="card card-body bg-secondary">
                     <div className="row">
