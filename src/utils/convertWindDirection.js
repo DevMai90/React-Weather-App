@@ -19,6 +19,7 @@ const cardinalDirection = {
   NNW: [326.25, 348.75]
 };
 
+// Create iterator
 cardinalDirection[Symbol.iterator] = function() {
   let properties = Object.keys(this),
     count = 0,

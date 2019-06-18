@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import API_KEY from '../../APIKeys';
 import axios from 'axios';
 import { Consumer } from '../../context';
@@ -10,12 +10,8 @@ class SearchForm extends Component {
   state = {
     zipcode: '',
     coordinates: null,
-    findCoordinates: true
+    findCoordinates: false
   };
-
-  componentDidMount() {
-    this.findGeolocation();
-  }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -44,6 +40,11 @@ class SearchForm extends Component {
         );
 
         dispatch({ type: 'UPDATE_LOCATION', payload: res.data });
+
+        this.setState({
+          ...this.state,
+          coordinates: null
+        });
       } else {
         const res = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&appid=${
@@ -61,18 +62,28 @@ class SearchForm extends Component {
     }
   };
 
-  findGeolocation = () => {
+  findGeolocation = (dispatch, e) => {
+    e.preventDefault();
+
+    dispatch({ type: 'LOADING' });
+
     const success = position => {
-      this.setState({ coordinates: position.coords, findCoordinates: false });
+      this.setState({
+        zipcode: '',
+        coordinates: position.coords,
+        findCoordinates: false
+      });
+
+      this.getWeather(dispatch, e);
     };
 
     const error = () => {
       this.setState({ findCoordinates: false });
-
-      console.log('Unable to retrieve location');
+      dispatch({ type: 'ERROR', payload: 'Geolocation must be enabled' });
     };
 
     if (!navigator.geolocation) {
+      this.setState({ findCoordinates: false });
       return console.log('Geolocation is unavailable');
     } else {
       navigator.geolocation.getCurrentPosition(success, error);
@@ -91,24 +102,40 @@ class SearchForm extends Component {
                 {loading || this.state.findCoordinates ? (
                   <Spinner />
                 ) : (
-                  <form
-                    className="form-inline"
-                    onSubmit={this.getWeather.bind(this, dispatch)}
-                  >
-                    {this.state.coordinates ? (
-                      <SearchGeo
-                        onResetClick={this.onResetClick.bind(this, dispatch)}
-                      />
-                    ) : (
-                      <SearchZip
-                        error={error}
-                        value={this.state.zipcode}
-                        onChange={this.onChange}
-                        dispatch={dispatch}
-                        onResetClick={this.onResetClick.bind(this, dispatch)}
-                      />
-                    )}
-                  </form>
+                  <Fragment>
+                    {/* Work Here */}
+                    <form
+                      className="form-inline"
+                      onSubmit={this.getWeather.bind(this, dispatch)}
+                    >
+                      <div className="form-group">
+                        <div className="input-group">
+                          <div className="input-group-prepend">
+                            <button
+                              className="btn btn-outline-primary "
+                              type="button"
+                              onClick={this.findGeolocation.bind(
+                                this,
+                                dispatch
+                              )}
+                            >
+                              Current Location
+                            </button>
+                          </div>
+                          <SearchZip
+                            error={error}
+                            value={this.state.zipcode}
+                            onChange={this.onChange}
+                            dispatch={dispatch}
+                            onResetClick={this.onResetClick.bind(
+                              this,
+                              dispatch
+                            )}
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </Fragment>
                 )}
               </div>
             </div>
