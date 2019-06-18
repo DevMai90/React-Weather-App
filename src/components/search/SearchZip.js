@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react';
-import classnames from 'classnames';
 
 const SearchZip = ({ error, value, onChange, onResetClick }) => {
   return (
-    // <div className="form-group">
-    // <div className="input-group">
     <Fragment>
       <input
         type="text"
-        className={classnames('form-control', {
-          'is-invalid': error
-        })}
+        className="form-control"
         name="zipcode"
         placeholder="Or Enter Zip Code..."
         value={value}
@@ -18,16 +13,22 @@ const SearchZip = ({ error, value, onChange, onResetClick }) => {
         error={error}
       />
       <div className="input-group-append">
-        <button className="btn btn-outline-primary ">Search</button>
+        <button className="btn btn-outline-primary" type="submit">
+          <i className="fas fa-search" />
+          <span className="d-none d-sm-inline"> Search</span>
+        </button>
       </div>
       <div className="input-group-append">
-        <button className="btn btn-outline-secondary" onClick={onResetClick}>
-          Reset
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={onResetClick}
+        >
+          <i className="fas fa-undo" />
+          <span className="d-none d-md-inline"> Reset</span>
         </button>
       </div>
     </Fragment>
-    // </div>
-    // </div>
   );
 };
 

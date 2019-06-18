@@ -1,20 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SearchGeo = ({ onResetClick }) => {
+const SearchGeo = ({ findGeolocation }) => {
   return (
-    <div className="form-group">
-      <div className="input-group">
-        <div className="btn-group" role="group">
-          <button className="btn btn-outline-primary ">
-            Search By Current Location
-          </button>
-          <button className="btn btn-outline-secondary" onClick={onResetClick}>
-            Reset
-          </button>
-        </div>
-      </div>
+    <div className="input-group-prepend">
+      <button
+        className="btn btn-outline-primary "
+        type="button"
+        onClick={findGeolocation}
+      >
+        <i className="fas fa-search-location" />
+        <span className="d-none d-md-inline"> Current Location</span>
+      </button>
     </div>
   );
+};
+
+SearchGeo.propTypes = {
+  findGeolocation: PropTypes.func.isRequired
 };
 
 export default SearchGeo;

@@ -5,6 +5,7 @@ import { Consumer } from '../../context';
 import Spinner from '../layout/Spinner';
 import SearchGeo from './SearchGeo';
 import SearchZip from './SearchZip';
+import classnames from 'classnames';
 
 class SearchForm extends Component {
   state = {
@@ -63,6 +64,7 @@ class SearchForm extends Component {
   };
 
   findGeolocation = (dispatch, e) => {
+    e.persist();
     e.preventDefault();
 
     dispatch({ type: 'LOADING' });
@@ -97,31 +99,28 @@ class SearchForm extends Component {
           const { dispatch, error, loading } = value;
 
           return (
-            <div className="border border-primary p-2">
+            <div
+              className={classnames('border border-primary p-2', {
+                'border-danger': error
+              })}
+            >
               <div className="d-flex flex-row justify-content-center">
                 {loading || this.state.findCoordinates ? (
                   <Spinner />
                 ) : (
                   <Fragment>
-                    {/* Work Here */}
                     <form
-                      className="form-inline"
+                      className="form-inline py-2"
                       onSubmit={this.getWeather.bind(this, dispatch)}
                     >
                       <div className="form-group">
                         <div className="input-group">
-                          <div className="input-group-prepend">
-                            <button
-                              className="btn btn-outline-primary "
-                              type="button"
-                              onClick={this.findGeolocation.bind(
-                                this,
-                                dispatch
-                              )}
-                            >
-                              Current Location
-                            </button>
-                          </div>
+                          <SearchGeo
+                            findGeolocation={this.findGeolocation.bind(
+                              this,
+                              dispatch
+                            )}
+                          />
                           <SearchZip
                             error={error}
                             value={this.state.zipcode}
