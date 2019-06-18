@@ -5,8 +5,11 @@ const Context = React.createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_LOCATION':
-      const { name, country } = action.payload.city;
-      const { list } = action.payload;
+      // const { name, country } = action.payload.city;
+      const {
+        list,
+        city: { name, country }
+      } = action.payload;
       return {
         ...state,
         city: name,
@@ -21,9 +24,6 @@ const reducer = (state, action) => {
         city: '',
         country: '',
         list: '',
-        currentWeather: '',
-        longitude: '',
-        latitude: '',
         error: '',
         loading: false
       };
@@ -33,9 +33,6 @@ const reducer = (state, action) => {
         city: '',
         country: '',
         list: '',
-        currentWeather: '',
-        longitude: '',
-        latitude: '',
         error: action.payload,
         loading: false
       };
@@ -45,7 +42,6 @@ const reducer = (state, action) => {
         city: '',
         country: '',
         list: '',
-        currentWeather: '',
         error: '',
         loading: true
       };
@@ -59,9 +55,6 @@ export class Provider extends Component {
     city: '',
     country: '',
     list: '',
-    currentWeather: '',
-    longitude: '',
-    latitude: '',
     error: '',
     loading: false,
     dispatch: action => this.setState(state => reducer(state, action))

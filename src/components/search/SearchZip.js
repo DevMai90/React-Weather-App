@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-const SearchZip = ({ error, value, onChange, onResetClick }) => {
+const SearchZip = ({ value, onChange, onResetClick }) => {
   return (
     <Fragment>
       <input
@@ -10,7 +11,6 @@ const SearchZip = ({ error, value, onChange, onResetClick }) => {
         placeholder="Or Enter Zip Code..."
         value={value}
         onChange={onChange}
-        error={error}
       />
       <div className="input-group-append">
         <button className="btn btn-outline-primary" type="submit">
@@ -30,6 +30,12 @@ const SearchZip = ({ error, value, onChange, onResetClick }) => {
       </div>
     </Fragment>
   );
+};
+
+SearchZip.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onResetClick: PropTypes.func.isRequired
 };
 
 export default SearchZip;

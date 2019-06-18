@@ -35,7 +35,7 @@ class WeatherDashboard extends Component {
           return (
             <Fragment>
               {city ? (
-                <div>
+                <Fragment>
                   <div className="d-flex flex-row align-items-stretch text-center">
                     <div
                       className="port-item bg-secondary text-white w-100 p-4"
@@ -62,7 +62,7 @@ class WeatherDashboard extends Component {
                   <CurrentWeather isOpen={currentForecast} />
                   <TodayForecast isOpen={todayForecast} />
                   <FiveDayForecast isOpen={fiveDayForecast} />
-                </div>
+                </Fragment>
               ) : (
                 <div className="text-center">
                   <small className="text-danger text-center">{error}</small>

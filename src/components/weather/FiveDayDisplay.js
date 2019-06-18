@@ -11,10 +11,11 @@ const FiveDayDisplay = ({ forecast }) => {
       {forecast.map(day => {
         let date = new Date(day.dt_txt).getDay();
         let shortDate = day.dt_txt.substring(5, 10);
+
         return (
           <div className="col-xs-auto mx-auto" key={date}>
             <div
-              className="text-center item-hl mt-2"
+              className="text-center mt-2"
               style={{ width: '150px', height: '225px' }}
             >
               <div className="card-body">

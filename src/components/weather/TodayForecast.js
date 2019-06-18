@@ -17,7 +17,7 @@ class TodayForecast extends Component {
               {isOpen && (
                 <div className="card card-body bg-warning">
                   <div className="row">
-                    <div className="col-10 mx-auto">
+                    <div className="col-11 mx-auto">
                       <div className="card card-body">
                         <h4 className="text-center m-0">12-Hour Forecast</h4>
                         <TodayForecastDisplay forecast={todayForecast} />
