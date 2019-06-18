@@ -14,7 +14,7 @@ const FiveDayDisplay = ({ forecast }) => {
         return (
           <div className="col-xs-auto mx-auto" key={date}>
             <div
-              className="card text-center border-primary item-hl mt-2"
+              className="text-center item-hl mt-2"
               style={{ width: '150px', height: '225px' }}
             >
               <div className="card-body">

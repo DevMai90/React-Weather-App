@@ -10,23 +10,21 @@ class TodayForecast extends Component {
       <Consumer>
         {value => {
           const { list } = value;
-          let todayForecast = list.slice(0, 5);
+          const todayForecast = list.slice(0, 5);
 
           return (
             <Fragment>
               {isOpen && (
-                <Fragment>
-                  <div className="card card-body bg-warning">
-                    <div className="row">
-                      <div className="col-10 mx-auto">
-                        <div className="card card-body">
-                          <h4 className="text-center m-0">12-Hour Forecast</h4>
-                          <TodayForecastDisplay forecast={todayForecast} />
-                        </div>
+                <div className="card card-body bg-warning">
+                  <div className="row">
+                    <div className="col-10 mx-auto">
+                      <div className="card card-body">
+                        <h4 className="text-center m-0">12-Hour Forecast</h4>
+                        <TodayForecastDisplay forecast={todayForecast} />
                       </div>
                     </div>
                   </div>
-                </Fragment>
+                </div>
               )}
             </Fragment>
           );
@@ -37,7 +35,7 @@ class TodayForecast extends Component {
 }
 
 TodayForecast.propTypes = {
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool
 };
 
 export default TodayForecast;

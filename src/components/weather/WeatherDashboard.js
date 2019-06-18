@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Consumer } from '../../context';
 import TodayForecast from './TodayForecast';
 import FiveDayForecast from './FiveDayForecast';
@@ -32,50 +32,44 @@ class WeatherDashboard extends Component {
             fiveDayForecast
           } = this.state.openSections;
 
-          if (city) {
-            return (
-              <div>
-                <div className="d-flex flex-row align-items-stretch text-center">
-                  <div
-                    className="port-item bg-secondary text-white w-100 p-4"
-                    // data-toggle="collapse"
-                    // data-target="#currentForecast"
-                    data-text="currentForecast"
-                    onClick={this.onClick}
-                  >
-                    <span data-text="currentForecast">Current Weather</span>
+          return (
+            <Fragment>
+              {city ? (
+                <div>
+                  <div className="d-flex flex-row align-items-stretch text-center">
+                    <div
+                      className="port-item bg-secondary text-white w-100 p-4"
+                      data-text="currentForecast"
+                      onClick={this.onClick}
+                    >
+                      <span data-text="currentForecast">Current Weather</span>
+                    </div>
+                    <div
+                      className="port-item bg-warning text-white w-100 p-4"
+                      data-text="todayForecast"
+                      onClick={this.onClick}
+                    >
+                      <span data-text="todayForecast">12-Hour Forecast</span>
+                    </div>
+                    <div
+                      className="port-item bg-info text-white w-100 p-4"
+                      data-text="fiveDayForecast"
+                      onClick={this.onClick}
+                    >
+                      <span data-text="fiveDayForecast">5-Day Forecast</span>
+                    </div>
                   </div>
-                  <div
-                    className="port-item bg-warning text-white w-100 p-4"
-                    // data-toggle="collapse"
-                    // data-target="#todayForecast"
-                    data-text="todayForecast"
-                    onClick={this.onClick}
-                  >
-                    <span data-text="fiveDayForecast">12-Hour Forecast</span>
-                  </div>
-                  <div
-                    className="port-item bg-info text-white w-100 p-4"
-                    // data-toggle="collapse"
-                    // data-target="#fiveDayForecast"
-                    data-text="fiveDayForecast"
-                    onClick={this.onClick}
-                  >
-                    <span data-text="fiveDayForecast">5-Day Forecast</span>
-                  </div>
+                  <CurrentWeather isOpen={currentForecast} />
+                  <TodayForecast isOpen={todayForecast} />
+                  <FiveDayForecast isOpen={fiveDayForecast} />
                 </div>
-                <CurrentWeather isOpen={currentForecast} />
-                <TodayForecast isOpen={todayForecast} />
-                <FiveDayForecast isOpen={fiveDayForecast} />
-              </div>
-            );
-          } else {
-            return (
-              <div className="text-center">
-                <small className="text-danger text-center">{error}</small>
-              </div>
-            );
-          }
+              ) : (
+                <div className="text-center">
+                  <small className="text-danger text-center">{error}</small>
+                </div>
+              )}
+            </Fragment>
+          );
         }}
       </Consumer>
     );

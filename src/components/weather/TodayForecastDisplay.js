@@ -8,13 +8,13 @@ const TodayForecastDisplay = ({ forecast }) => {
   return (
     <div className="row">
       {forecast.map(hour => {
-        let shortDate = hour.dt_txt.substring(5, 10);
-        let time = convertTime(hour.dt_txt);
+        const shortDate = hour.dt_txt.substring(5, 10);
+        const time = convertTime(hour.dt_txt);
 
         return (
           <div className="col-xs-auto mx-auto" key={time}>
             <div
-              className="card text-center border-primary item-hl mt-2"
+              className="text-center item-hl mt-2"
               style={{ width: '150px', height: '225px' }}
             >
               <div className="card-body">

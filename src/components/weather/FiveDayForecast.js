@@ -20,25 +20,17 @@ class FiveDayForecast extends Component {
           return (
             <Fragment>
               {isOpen && (
-                <Fragment>
-                  <div className="card card-body bg-info">
-                    <div className="row">
-                      <div className="col-10 mx-auto">
-                        <div className="card card-body">
-                          <h4 className="text-center m-0">5-Day Forecast</h4>
-                          <FiveDayDisplay forecast={dailyForecast} />
-                        </div>
+                <div className="card card-body bg-info">
+                  <div className="row">
+                    <div className="col-10 mx-auto">
+                      <div className="card card-body">
+                        <h4 className="text-center m-0">5-Day Forecast</h4>
+                        <FiveDayDisplay forecast={dailyForecast} />
                       </div>
                     </div>
                   </div>
-                </Fragment>
-              )}
-              {/* <div className="card mt-2 mb-1">
-                <div className="card-body bg-primary text-white text-center">
-                  <h3 className="display-4">Five Day Forecast</h3>
                 </div>
-              </div>
-              <FiveDayDisplay forecast={dailyForecast} /> */}
+              )}
             </Fragment>
           );
         }}
@@ -48,7 +40,7 @@ class FiveDayForecast extends Component {
 }
 
 FiveDayForecast.propTypes = {
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool
 };
 
 export default FiveDayForecast;
