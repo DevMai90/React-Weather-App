@@ -21,8 +21,10 @@ class Header extends Component {
                 {loading ? (
                   <Spinner color="text-white" />
                 ) : (
-                  <h1 className="display-4">
-                    {city ? `${city}, ${country}` : 'Weather Conditions'}
+                  <h1 className="display-4" style={{ fontSize: '36px' }}>
+                    <strong>
+                      {city ? `${city}, ${country}` : 'Weather Conditions'}
+                    </strong>
                   </h1>
                 )}
               </div>

@@ -10,7 +10,7 @@ const SearchGeo = ({ findGeolocation }) => {
         onClick={findGeolocation}
       >
         <i className="fas fa-search-location" />
-        <span className="d-none d-md-inline"> Current Location</span>
+        <span className="d-none d-md-inline"> Use Current Location</span>
       </button>
     </div>
   );

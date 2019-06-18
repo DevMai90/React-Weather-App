@@ -8,7 +8,7 @@ const SearchZip = ({ value, onChange, onResetClick }) => {
         type="text"
         className="form-control"
         name="zipcode"
-        placeholder="Or Enter Zip Code..."
+        placeholder="Lookup Zip Code..."
         value={value}
         onChange={onChange}
       />
