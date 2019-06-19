@@ -29,7 +29,7 @@ class CurrentWeather extends Component {
               {isOpen && (
                 <div className="card card-body bg-secondary">
                   <div className="row">
-                    <div className="col-md-7 mx-auto">
+                    <div className="col-sm-7 mx-auto">
                       <div className="card card-body">
                         <h4 className="text-center m-0 p-0">
                           <Moment format="MMMM Do YYYY" />

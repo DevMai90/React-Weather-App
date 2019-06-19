@@ -3,12 +3,13 @@ import convertTemp from '../../utils/convertTemp';
 import convertUppercase from '../../utils/convertUppercase';
 import convertTime from '../../utils/convertTime';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 const TodayForecastDisplay = ({ forecast }) => {
   return (
     <div className="row">
       {forecast.map(hour => {
-        const shortDate = hour.dt_txt.substring(5, 10);
+        const date = new Date(`${hour.dt_txt.replace(/-/g, '/')} UTC`);
         const time = convertTime(hour.dt_txt);
 
         return (
@@ -18,7 +19,9 @@ const TodayForecastDisplay = ({ forecast }) => {
               style={{ width: '150px', height: '225px' }}
             >
               <div className="card-body">
-                <h4>{shortDate}</h4>
+                <h4>
+                  <Moment format="MM-DD">{date}</Moment>
+                </h4>
                 <small>{time}</small>
                 <br />
                 <img
