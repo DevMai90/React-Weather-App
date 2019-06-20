@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Dashboard from './components/layout/Dashboard';
+import { Provider } from './context';
+import Header from './components/layout/Header';
+import SearchForm from './components/search/SearchForm';
+import WeatherDashboard from './components/weather/WeatherDashboard';
 import Footer from './components/layout/Footer';
 
-import { Provider } from './context';
 import './bootstrap.css';
 import './App.css';
 
@@ -11,7 +13,17 @@ class App extends Component {
     return (
       <Provider>
         <div className="App">
-          <Dashboard />
+          <div className="container">
+            <div className="row no-gutters">
+              <div className="col">
+                <div className="d-flex flex-column mt-3">
+                  <Header />
+                  <SearchForm />
+                  <WeatherDashboard />
+                </div>
+              </div>
+            </div>
+          </div>
           <Footer />
         </div>
       </Provider>
