@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Consumer } from '../../context';
-import TodayForecastDisplay from './TodayForecastDisplay';
+import TodayDisplay from './TodayDisplay';
 import PropTypes from 'prop-types';
 
 class TodayForecast extends Component {
@@ -20,7 +20,7 @@ class TodayForecast extends Component {
                     <div className="col-11 mx-auto">
                       <div className="card card-body">
                         <h4 className="text-center m-0">12-Hour Forecast</h4>
-                        <TodayForecastDisplay forecast={todayForecast} />
+                        <TodayDisplay forecast={todayForecast} />
                       </div>
                     </div>
                   </div>
