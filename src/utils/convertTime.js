@@ -7,7 +7,9 @@ const convertTime = time => {
   if (time === undefined) currentTime = new Date();
   else currentTime = new Date(`${time.replace(/-/g, '/')} UTC`);
 
-  if (currentTime.getHours() <= 12)
+  if (currentTime.getHours() === 0)
+    localTime = `12:${addZero(currentTime.getMinutes())}AM`;
+  else if (currentTime.getHours() <= 12)
     localTime = `${currentTime.getHours()}:${addZero(
       currentTime.getMinutes()
     )}AM`;
