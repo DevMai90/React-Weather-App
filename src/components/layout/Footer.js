@@ -9,7 +9,7 @@ const Footer = () => {
         </div>
         <div className="p-4">
           <a
-            href="http://david-mai.com/"
+            href="https://david-mai.com/"
             className="text-dark"
             target="_blank"
             rel="noopener noreferrer"
@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="p-4">
           <a
-            href="https://www.linkedin.com/in/nldavidmai/"
+            href="https://linkedin.com/in/nldavidmai/"
             className="text-dark"
             target="_blank"
             rel="noopener noreferrer"
